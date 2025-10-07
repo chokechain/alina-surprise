@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ciao Alina – Überraschung!</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <canvas id="confetti-canvas" style="display:none"></canvas>
+  <div class="container">
+    <div class="badge">Uschi-Design™</div>
+    <h1>Ciao Alina 👋 – Bist du bereit für eine mini Schnitzeljagd?</h1>
+    <div class="marquee"><span>Ciao, Alina! 🎉 | Andiamo? | Forza, forza! | Dolce vita mode: ON | Una sorpresa ti aspetta! &nbsp; Ciao, Alina! 🎉 | Andiamo? | Forza, forza! | Dolce vita mode: ON | Una sorpresa ti aspetta!</span></div>
+
+    <!-- Navigation dots -->
+    <div class="nav-dots" aria-label="Progress">
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+      <div class="dot"></div>
+    </div>
+
+    <!-- Section 1 -->
+    <section class="section" id="s1">
+      <p>Klick dich durch bunte Hinweise. Am Ende wartet eine Überraschung. (Psst… niente paura!)</p>
+      <div class="hint-emoji">🎁✨</div>
+      <div class="button-row">
+        <button class="btn" data-next>👉 Weiter!</button>
+      </div>
+      <div class="audio-tip">🎶 Sarà perché ti amo – Ricchi e Poveri (läuft im Hintergrund)</div>
+    </section>
+
+    <!-- Section 2 -->
+    <section class="section" id="s2">
+      <h2>Hinweis #1: Irgendwo startet immer alles…</h2>
+      <p>Piep… Piep… Durchsage! Vielleicht ein Ort, wo Boardkarten wichtig sind? (Ma che sarà?)</p>
+      <div class="hint-emoji">🛄✈️🛫</div>
+      <div class="button-row">
+        <button class="btn" data-prev>⬅️ Zurück</button>
+        <button class="btn" data-next>👉 Weiter!</button>
+      </div>
+    </section>
+
+    <!-- Section 3 -->
+    <section class="section" id="s3">
+      <h2>Hinweis #2: Forza! Forza!</h2>
+      <p>Manchmal trägt man Startnummern, manchmal nur gute Schuhe. (Il ritmo chiama…)</p>
+      <div class="hint-emoji">🏃‍♀️🔥🥇</div>
+      <div class="button-row">
+        <button class="btn" data-prev>⬅️ Zurück</button>
+        <button class="btn" data-next>👉 Weiter!</button>
+      </div>
+    </section>
+
+    <!-- Section 4 -->
+    <section class="section" id="s4">
+      <h2>Hinweis #3: Un po’ d’Italia</h2>
+      <p>Kohlenhydrate? Ma certo! Vielleicht 🍝 oder ein frischer Spritz 🍹… (Che sapore!)</p>
+      <div class="hint-emoji">🍝🍊🥂</div>
+      <div class="button-row">
+        <button class="btn" data-prev>⬅️ Zurück</button>
+        <button class="btn" data-next>👉 Weiter!</button>
+      </div>
+    </section>
+
+    <!-- Section 5 (Finale) -->
+    <section class="section" id="s5" data-finale="1">
+      <h2>🎉 Herzlichen Glückwunsch – Rätsel gelöst! 🎉</h2>
+      <p>Trommelwirbel… ✨ Wir fliegen <strong>nächstes Jahr</strong> in die <strong>Ewige Stadt</strong>! Pack die Laufschuhe ein: <strong>ROM &amp; MARATHON</strong> warten auf dich! 🇮🇹🏃‍♀️<br><br><em>Buon compleanno, Alina!</em> – Auf Pasta-Glück, Aperol-Lachen und ganz viel Amore.</p>
+      <div class="hint-emoji">🛫🏃‍♀️🏛️💘</div>
+      <div class="button-row">
+        <button class="btn" data-prev>⬅️ Zurück</button>
+      </div>
+      <footer>Made with 💖 &amp; Gelato • Buon compleanno il 18 ottobre!</footer>
+    </section>
+
+  </div>
+
+  <!-- Hidden YouTube player (autoplay, loop) -->
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/CaLdtnR5vfE?autoplay=1&loop=1&playlist=CaLdtnR5vfE"
+    frameborder="0"
+    allow="autoplay">
+  </iframe>
+
+  <script src="assets/confetti.js"></script>
+  <script src="assets/script.js"></script>
+
+<!-- Hintergrundmusik: startet nach erstem Klick -->
+<audio id="bgmusic" src="assets/sara.mp3" preload="auto" loop></audio>
+<script>
+  const music = document.getElementById('bgmusic');
+  document.addEventListener('click', () => {
+    if (music.paused) {
+      let vol = 0;
+      music.volume = 0;
+      music.play().catch(() => {});
+      const fadeIn = setInterval(() => {
+        vol += 0.05;
+        if (vol >= 0.9) { vol = 0.9; clearInterval(fadeIn); }
+        music.volume = vol;
+      }, 200);
+    }
+  }, { once: true });
+</script>
+
+</body>
+</html>
